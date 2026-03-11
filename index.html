@@ -436,37 +436,123 @@ Public: Dapat diakses dari mana saja (default).
 
 Private Hanya dapat diakses dalam file yang sama.
         </pre>
-    </div>
 <div class="card">
   <pre>
 // Nama   : Azriel Miracle Yuandre
 // Nim    : 251410024
 // Kelas  : Si2A 
 
-class Hewan {
-  String namahewan;
-  
-  Hewan(this.namahewan);
-  
-  void bersuara() {
-    print('$namahewan sedang bersuara...');
-  }
+class Person {
+  String _name; // Private: Hanya bisa diakses di file ini
+  int age;      // Public: Dapat diakses bebas
+
+  Person(this._name, this.age);
+
+  void info() => print('Nama: $_name, Umur: $age');
 }
 
 void main() {
-  var myPet = Hewan('Angsa');
-  
-  print('Nama Hewan: ${myPet.namahewan}');
-  
-  myPet.bersuara();
+  var p = Person('Azriel Miracle Yuandre', 20);
+  p.info();
 }
   </pre>
   
-  <button class="btn" onclick="openModal('2c81b3556ee53679d568178fb3799329')">
+  <button class="btn" onclick="openModal('46fa1b5e7e941dcc6a3917bb923ea8bb')">
     Lihat Kode
   </button>
 </div>
 
+<h2>Getter And Setter</h2>
+      <div class="card">
+<prep>
+  Getter: Memungkinkan membaca data private dengan kontrol.
+
+Sintaks 1: tipeData get namaGetter => _field; (Arrow)
+
+Sintaks 2: tipeData namaGetter() { return _field; } (Block)
+
+Setter: Memungkinkan modifikasi data dengan validasi.
+
+Sintaks 1: set namaSetter (value) {... (Set Keyword)
+
+Sintaks 2: void namaSetter (value) {...} (Method Approach
+</prep>
+
+      <div class="card">
+        <prep>
+
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A 
+
+
+  class Person {
+  String _name;
+  int age;
+  Person(this._name, this.age);
+  
+  set setName1(String name) {
+    _name = name;
+  }
+
+  void setName(String name) {
+    _name = name;
+  }
+
+  String getName() {
+    return _name;
+  }
+}
+
+void main() {
+  Person person = Person("Azriel Miracle Yuandre", 20);
+  print('Umur: ${person.age}');
+  
+  person.setName('Miracle');
+  print('Nama (via Method): ${person.getName()}');
+  
+  person.setName1 = 'Azriel Miracle Yuandre';
+  print('Nama (via Setter): ${person.getName()}');
+}
+        </prep>
+
+ <button class="btn" onclick="openModal('3dd02b01404a0dc2e8fa0251ab10de6d')">
+    Lihat Kode
+  </button>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
 <footer>
   <h2>Kesimpulan</h2>
 
@@ -533,11 +619,48 @@ void main() {
   </div>
 </div>
 
-<div id="2c81b3556ee53679d568178fb3799329" class="modal">
+<div id="46fa1b5e7e941dcc6a3917bb923ea8bb" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('2c81b3556ee53679d568178fb3799329')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=2c81b3556ee53679d568178fb3799329&null_safety=true&run=true"></iframe>
+    <span class="close" onclick="closeModal('46fa1b5e7e941dcc6a3917bb923ea8bb')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=46fa1b5e7e941dcc6a3917bb923ea8bb&null_safety=true&run=true"></iframe>
   </div>
+
+  //mulai dari sini
+
+<div id="3dd02b01404a0dc2e8fa0251ab10de6d" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('3dd02b01404a0dc2e8fa0251ab10de6d')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=3dd02b01404a0dc2e8fa0251ab10de6d&null_safety=true&run=true"></iframe>
+  </div>
+</div>
+
+<div id="d4d3e01d810cb35552170bf7317bd3ee" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('d4d3e01d810cb35552170bf7317bd3ee')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=d4d3e01d810cb35552170bf7317bd3ee&null_safety=true&run=true"></iframe>
+  </div>
+</div>
+
+<div id="fab6c5b75398c9d1315b8877725646cb" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('fab6c5b75398c9d1315b8877725646cb')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=fab6c5b75398c9d1315b8877725646cb&null_safety=true&run=true"></iframe>
+  </div>
+</div>
+
+<div id="62dba7174bae5127cc47547a6984032c" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('62dba7174bae5127cc47547a6984032c')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=62dba7174bae5127cc47547a6984032c&null_safety=true&run=true"></iframe>
+  </div>
+</div>
+
+<div id="46fa1b5e7e941dcc6a3917bb923ea8bb" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('46fa1b5e7e941dcc6a3917bb923ea8bb')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=46fa1b5e7e941dcc6a3917bb923ea8bb&null_safety=true&run=true"></iframe>
+  </div>
+  
 </div>
 
 <script>
