@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laporan OOP Dart</title>
+<title></title>
 
 <style>
 body{
@@ -639,7 +639,7 @@ void main() {
   user.info();
 }
 </pre>
-           <button class="btn" onclick="openModal('fab6c5b75398c9d1315b8877725646cb')">
+           <button class="btn" onclick="openModal('1ce7965bdae8cb30413f2126fd140bbc')">
     Lihat Kode
   </button>
         </div>
@@ -692,8 +692,52 @@ void main() {
   </button>
         </div>
 
+        <h2>Latihan Bank</h2>
+        <div class="card">
+        <pre>
+ // Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
 
+class RekeningBank {
+  String _nomorRekening;
+  double _saldo;
 
+  RekeningBank(this._nomorRekening, this._saldo);
+
+  void deposit(double jml) {
+    if (jml > 0) {
+      _saldo += jml;
+      print('Deposit Rp $jml Berhasil.');
+    }
+  }
+
+  void tarik(double jml) {
+    if (jml > 0 && _saldo >= jml) {
+      _saldo -= jml;
+      print('Tarik Rp $jml Berhasil.');
+    } else {
+      print('Gagal: Saldo tidak cukup atau input tidak valid.');
+    }
+  }
+
+  void cekSaldo() {
+    print('Rekening: $_nomorRekening | Saldo: Rp $_saldo');
+  }
+}
+
+void main() {
+  var bank = RekeningBank('9837-10009', 23000000);
+  bank.cekSaldo();
+  bank.tarik(500000);
+  bank.cekSaldo();
+}
+        </pre>
+
+ <button class="btn" onclick="openModal('a9c8ab069ebb9a3ec290ddb07e3a044e')">
+    Lihat Kode
+  </button>
+        </div>
 
 
 
@@ -813,10 +857,10 @@ void main() {
   </div>
 </div>
 
-<div id="46fa1b5e7e941dcc6a3917bb923ea8bb" class="modal">
+<div id="a9c8ab069ebb9a3ec290ddb07e3a044e" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('46fa1b5e7e941dcc6a3917bb923ea8bb')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=46fa1b5e7e941dcc6a3917bb923ea8bb&null_safety=true&run=true"></iframe>
+    <span class="close" onclick="closeModal('a9c8ab069ebb9a3ec290ddb07e3a044e')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=a9c8ab069ebb9a3ec290ddb07e3a044e&null_safety=true&run=true"></iframe>
   </div>
   
 </div>
