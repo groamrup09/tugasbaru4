@@ -13,7 +13,6 @@ body{
   background: linear-gradient(135deg,#f1f5f9,#dbeafe);
   line-height:1.6;
   color:#1e293b;
-  
 }
 
 .container{
@@ -44,6 +43,7 @@ p{
   border-radius:12px;
   box-shadow:0 8px 20px rgba(0,0,0,0.08);
   transition:0.3s;
+  margin-bottom: 20px;
 }
 
 .card:hover{
@@ -140,7 +140,16 @@ footer{
   from{opacity:0; transform:translateY(-20px);}
   to{opacity:1; transform:translateY(0);}
 }
-  
+
+pre {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
 </style>
 </head>
 
@@ -148,63 +157,53 @@ footer{
 
 <div class="container">
 
-<h1>Riview Sesi 1</h1>
+<h1>Review Sesi 1</h1>
 <p><b>Nama:</b> Azriel Miracle Yuandre</p>
 <p><b>NIM:</b> 251410024</p>
-<p><b>kelas:</b> si2a</p>
+<p><b>Kelas:</b> SI2A</p>
 
 <div class="card">
-<p>
+  <p>
+    Mengingat kembali pilar dasar pemrograman berorientasi objek dalam bahasa Dart sebelum masuk ke topik utama:
+  </p>
+  <ul>
+    <li><b>OOP:</b> Paradigma yang berfokus pada objek sebagai unit utama.</li>
+    <li><b>Class:</b> Blueprint atau cetakan protokol untuk membuat objek.</li>
+    <li><b>Object:</b> Manifestasi runtime atau instance nyata dari sebuah class.</li>
+    <li><b>Constructor:</b> Method khusus yang digunakan untuk inisialisasi objek.</li>
+  </ul>
+  
   <pre>
-Mengingat kembali pilar dasar pemrograman berorientasi objek dalam bahasa Dort sebelum masuk ke topik utama
-
-OOP: Paradigma yang berfokus pada objek sebagai unit utama.
-
-Class: Blueprint atau cetakan protokol untuk membuat objek
-
-Object: Manifestasi runtime atau instance nyata dari sebuah class.
-
-Constructor: Method khusus yang digunakan untuk inisialisasi objek.
-    </pre>
-</p>
-    
-  <pre>
-// Nama: Azriel MIracle YUandre
-
+// Nama: Azriel Miracle Yuandre
 // Nim: 251410024
-
-// Kelas Si2A
+// Kelas: SI2A
 
 class Buku {
-String judul;
-
-Buku(this.judul);
+  String judul;
+  Buku(this.judul);
 }
+
 void main() {
-
-var buku1 =Buku('Belajar Dart OOP');
-
-print('Judul Buku: ${buku1.judul}');
-
+  var buku1 = Buku('Belajar Dart OOP');
+  print('Judul Buku: ${buku1.judul}');
 }
-
-</pre>
-</div>
-<button class="btn" onclick="openModal('11dc282384908ce64180992dafa3c188')">
-Lihat Kode
-</button>
+  </pre>
+  
+  <button class="btn" onclick="openModal('11dc282384908ce64180992dafa3c188')">
+    Lihat Kode
+  </button>
 </div>
 
 <h2>2. Constructor</h2>
 <div class="card">
-<p>
-Constructor adalah metode inisialisasi yang dipanggil secara otomatis saat objek baru diciptakan dalam memori sistem. Di Dart, kita bisa menggunakan formal parameters (this.attribute) untuk menyederhanakan proses pengisian nilai attribute.
-Constructor merupakan metode khusus yang dipanggil secara otomatis saat objek dibuat. 
-Constructor berfungsi untuk melakukan inisialisasi nilai awal attribute sehingga objek langsung berada dalam kondisi valid dan siap digunakan. 
-Dalam bahasa Dart, constructor dapat menggunakan formal parameter (<i>this.attribute</i>) untuk menyederhanakan penulisan kode.
-</p>
-<div class="card">
-<pre>
+  <p>
+    Constructor adalah metode inisialisasi yang dipanggil secara otomatis saat objek baru diciptakan dalam memori sistem. Di Dart, kita bisa menggunakan formal parameters (this.attribute) untuk menyederhanakan proses pengisian nilai attribute.
+    Constructor merupakan metode khusus yang dipanggil secara otomatis saat objek dibuat. 
+    Constructor berfungsi untuk melakukan inisialisasi nilai awal attribute sehingga objek langsung berada dalam kondisi valid dan siap digunakan. 
+    Dalam bahasa Dart, constructor dapat menggunakan formal parameter (<i>this.attribute</i>) untuk menyederhanakan penulisan kode.
+  </p>
+  
+  <pre>
 // Nama   : Azriel Miracle Yuandre
 // Nim    : 251410024
 // Kelas  : Si2A
@@ -225,42 +224,35 @@ void main() {
   myCar.start(); 
   print(myCar.color); 
 }
-</pre>
-</div>
-<button class="btn" onclick="openModal('556cd77508c8381a0719ead99a41fe27')">
-Lihat Kode
-</button>
+  </pre>
+  
+  <button class="btn" onclick="openModal('556cd77508c8381a0719ead99a41fe27')">
+    Lihat Kode
+  </button>
 </div>
 
 <h2>3. Validasi Constructor (Mahasiswa)</h2>
 <div class="card">
-<p>
-Validasi pada constructor merupakan teknik untuk memastikan bahwa data yang diberikan saat pembuatan object berada dalam kondisi yang benar (valid). 
-Tanpa validasi, object berpotensi memiliki nilai yang tidak logis atau berada di luar batas yang diperbolehkan.
-</p>
+  <p>
+    Validasi pada constructor merupakan teknik untuk memastikan bahwa data yang diberikan saat pembuatan object berada dalam kondisi yang benar (valid). 
+    Tanpa validasi, object berpotensi memiliki nilai yang tidak logis atau berada di luar batas yang diperbolehkan.
+  </p>
 
-<p>
-Dalam contoh class <i>Mahasiswa</i>, validasi dilakukan terhadap nilai IPK agar tetap berada dalam rentang 0.0 hingga 4.0. 
-Jika nilai yang dimasukkan berada di luar batas tersebut, sistem dapat memberikan peringatan atau menolak pembuatan object. 
-Hal ini bertujuan menjaga konsistensi dan integritas data akademik.
-</p>
+  <p>
+    Dalam contoh class <i>Mahasiswa</i>, validasi dilakukan terhadap nilai IPK agar tetap berada dalam rentang 0.0 hingga 4.0. 
+    Jika nilai yang dimasukkan berada di luar batas tersebut, sistem dapat memberikan peringatan atau menolak pembuatan object. 
+    Hal ini bertujuan menjaga konsistensi dan integritas data akademik.
+  </p>
 
-<p>
-Dengan menerapkan validasi pada constructor, kita memastikan bahwa setiap object yang dibuat sudah memenuhi aturan bisnis (business rule) sejak awal. 
-Pendekatan ini mengurangi kemungkinan terjadinya error pada proses eksekusi program di tahap berikutnya.
-</p> 
-<div class="card">
-<pre>
-// Nama   : Azriel Miracle Yaundre
-// Nim    : 251410024
-// Kelas  : Si2A
-
+  <p>
+    Dengan menerapkan validasi pada constructor, kita memastikan bahwa setiap object yang dibuat sudah memenuhi aturan bisnis (business rule) sejak awal. 
+    Pendekatan ini mengurangi kemungkinan terjadinya error pada proses eksekusi program di tahap berikutnya.
+  </p>
+  
+  <pre>
 // Nama   : Azriel Miracle Yuandre
-
 // Nim    : 251410024
-
 // Kelas  : Si2A
-
 
 class Mahasiswa {
   String nama; 
@@ -277,26 +269,26 @@ class Mahasiswa {
 }
 
 void main() {
-  Mahasiswa mhs1 = Mahasiswa("Azriel Miracle yuandre", "251410024", 3.98);
-  
+  Mahasiswa mhs1 = Mahasiswa("Azriel Miracle Yuandre", "251410024", 3.98);
   mhs1.tampilkanData();
 }
-</pre>
-</div>
-<button class="btn" onclick="openModal('44b739d4c8e40937611f40845e661707')">
-Lihat Kode
-</button>
+  </pre>
+  
+  <button class="btn" onclick="openModal('44b739d4c8e40937611f40845e661707')">
+    Lihat Kode
+  </button>
 </div>
 
 <h2>4. Encapsulation (Person)</h2>
 <div class="card">
-<p>
-Encapsulation adalah teknik untuk menyembunyikan detail implementasi internal. Di Dart, kita menggunakan awalan underscore (_) untuk membuat attribute bersifat private, sehingga hanya bisa diakses melalui getter dan setter. prinsip fundamental dalam OOP yang bertujuan melindungi data internal objek dari akses langsung yang tidak sah. 
-Dengan membatasi akses melalui mekanisme getter dan setter, integritas data dapat dijaga dan kesalahan manipulasi dapat diminimalisir. 
-Encapsulation meningkatkan keamanan serta stabilitas sistem dalam skala besar.
-</p>
-<div class="card">
-<pre>
+  <p>
+    Encapsulation adalah teknik untuk menyembunyikan detail implementasi internal. Di Dart, kita menggunakan awalan underscore (_) untuk membuat attribute bersifat private, sehingga hanya bisa diakses melalui getter dan setter. 
+    Ini adalah prinsip fundamental dalam OOP yang bertujuan melindungi data internal objek dari akses langsung yang tidak sah. 
+    Dengan membatasi akses melalui mekanisme getter dan setter, integritas data dapat dijaga dan kesalahan manipulasi dapat diminimalisir. 
+    Encapsulation meningkatkan keamanan serta stabilitas sistem dalam skala besar.
+  </p>
+  
+  <pre>
 // Nama   : Azriel Miracle Yuandre
 // Nim    : 251410024
 // Kelas  : Si2A
@@ -319,23 +311,23 @@ void main() {
   person.setName("Azriel Miracle Yuandre");
   print(person.getName()); 
 }
-</pre>
-</div>
-<button class="btn" onclick="openModal('d220dd26797081f9eb41f7a14d4e33df')">
-Lihat Kode
-</button>
+  </pre>
+  
+  <button class="btn" onclick="openModal('d220dd26797081f9eb41f7a14d4e33df')">
+    Lihat Kode
+  </button>
 </div>
 
 <h2>5. Named Parameter (Produk)</h2>
 <div class="card">
-<p>
-Latihan lanjutan menggunakan Named Parameters dan operator required. Teknik ini membuat pembuatan objek menjadi lebih deskriptif dan aman karena compiler akan memberikan peringatan jika data wajib tidak diisi.
-Selain itu, Dart juga mendukung penggunaan <b>Named Parameter</b>, yaitu teknik pengisian parameter berdasarkan nama variabel. 
-Penggunaan keyword <b>required</b> memastikan bahwa parameter penting tidak boleh kosong saat proses instansiasi objek dilakukan. 
-Pendekatan ini meningkatkan kejelasan kode (readability) dan mengurangi potensi kesalahan input.
-</p>
-<div class="card">
-<pre>
+  <p>
+    Latihan lanjutan menggunakan Named Parameters dan operator required. Teknik ini membuat pembuatan objek menjadi lebih deskriptif dan aman karena compiler akan memberikan peringatan jika data wajib tidak diisi.
+    Selain itu, Dart juga mendukung penggunaan <b>Named Parameter</b>, yaitu teknik pengisian parameter berdasarkan nama variabel. 
+    Penggunaan keyword <b>required</b> memastikan bahwa parameter penting tidak boleh kosong saat proses instansiasi objek dilakukan. 
+    Pendekatan ini meningkatkan kejelasan kode (readability) dan mengurangi potensi kesalahan input.
+  </p>
+  
+  <pre>
 // Nama   : Azriel Miracle Yuandre
 // Nim    : 251410024
 // Kelas  : Si2A
@@ -358,7 +350,7 @@ class Produk {
 void main() {
   Produk laptop = Produk(
     id: "P003",
-    nama: "Laptop soak",
+    nama: "Laptop Asus",
     harga: 15000000,
     stok: 15,
     kategori: "Elektronik",
@@ -366,7 +358,7 @@ void main() {
 
   Produk smartphone = Produk(
     id: "P004",
-    nama: "Smartphone edge",
+    nama: "Smartphone Samsung",
     harga: 12000000,
     stok: 25,
   );
@@ -381,24 +373,21 @@ void main() {
   print(smartphone.nama); 
   print(kamera.nama); 
 }
- 
-</pre>
-</div>
-<button class="btn" onclick="openModal('b803d969482da4165193e77c5295c795')">
-Lihat Kode
-</button>
+  </pre>
+  
+  <button class="btn" onclick="openModal('b803d969482da4165193e77c5295c795')">
+    Lihat Kode
+  </button>
 </div>
 
 <h2>QUIZ BONUS HEWAN CLASS</h2>
 <div class="card">
-<pre>
+  <pre>
 // Nama   : Azriel Miracle Yuandre
-
 // Nim    : 251410024
-
 // Kelas  : Si2A 
-  
-  class Hewan {
+
+class Hewan {
   String namahewan;
   
   Hewan(this.namahewan);
@@ -415,39 +404,39 @@ void main() {
   
   myPet.bersuara();
 }
-</pre>
-<button class="btn" onclick="openModal('2c81b3556ee53679d568178fb3799329')">
-Lihat Kode
-</button>
+  </pre>
+  
+  <button class="btn" onclick="openModal('2c81b3556ee53679d568178fb3799329')">
+    Lihat Kode
+  </button>
 </div>
 
-  
 <footer>
-<h2>Kesimpulan</h2>
+  <h2>Kesimpulan</h2>
 
-<p>
-Berdasarkan pembahasan dan implementasi yang telah dilakukan, dapat disimpulkan bahwa Object Oriented Programming (OOP) merupakan paradigma pemrograman yang efektif dalam membangun sistem perangkat lunak yang terstruktur dan modular. 
-Dengan menggunakan konsep class dan object, program dapat direpresentasikan secara lebih sistematis sesuai dengan model dunia nyata.
-</p>
+  <p>
+    Berdasarkan pembahasan dan implementasi yang telah dilakukan, dapat disimpulkan bahwa Object Oriented Programming (OOP) merupakan paradigma pemrograman yang efektif dalam membangun sistem perangkat lunak yang terstruktur dan modular. 
+    Dengan menggunakan konsep class dan object, program dapat direpresentasikan secara lebih sistematis sesuai dengan model dunia nyata.
+  </p>
 
-<p>
-Penerapan constructor memastikan bahwa setiap objek yang dibuat memiliki kondisi awal yang valid, sehingga mengurangi potensi kesalahan selama proses eksekusi. 
-Sementara itu, validasi pada constructor berperan penting dalam menjaga konsistensi data dan mencegah terjadinya nilai yang tidak logis dalam sistem.
-</p>
+  <p>
+    Penerapan constructor memastikan bahwa setiap objek yang dibuat memiliki kondisi awal yang valid, sehingga mengurangi potensi kesalahan selama proses eksekusi. 
+    Sementara itu, validasi pada constructor berperan penting dalam menjaga konsistensi data dan mencegah terjadinya nilai yang tidak logis dalam sistem.
+  </p>
 
-<p>
-Melalui prinsip encapsulation, data internal objek dapat dilindungi dari akses langsung yang tidak sah, sehingga meningkatkan keamanan dan stabilitas program. 
-Penggunaan named parameter dengan keyword <b>required</b> juga membantu meningkatkan kejelasan kode dan meminimalkan kesalahan input saat proses instansiasi objek.
-</p>
+  <p>
+    Melalui prinsip encapsulation, data internal objek dapat dilindungi dari akses langsung yang tidak sah, sehingga meningkatkan keamanan dan stabilitas program. 
+    Penggunaan named parameter dengan keyword <b>required</b> juga membantu meningkatkan kejelasan kode dan meminimalkan kesalahan input saat proses instansiasi objek.
+  </p>
 
-<p>
-Secara keseluruhan, penerapan OOP dalam bahasa Dart menunjukkan bahwa pendekatan ini mampu meningkatkan keterbacaan kode, efisiensi pengembangan, serta kemudahan pemeliharaan sistem dalam jangka panjang. 
-Paradigma ini menjadi fondasi penting dalam pengembangan aplikasi modern, termasuk dalam framework Flutter yang berbasis Dart.
-</p>
+  <p>
+    Secara keseluruhan, penerapan OOP dalam bahasa Dart menunjukkan bahwa pendekatan ini mampu meningkatkan keterbacaan kode, efisiensi pengembangan, serta kemudahan pemeliharaan sistem dalam jangka panjang. 
+    Paradigma ini menjadi fondasi penting dalam pengembangan aplikasi modern, termasuk dalam framework Flutter yang berbasis Dart.
+  </p>
 
-<p>
-Dengan memahami dan mengimplementasikan konsep-konsep dasar OOP seperti class, object, constructor, validasi, dan encapsulation, pengembang dapat membangun sistem yang lebih robust, scalable, dan profesional.
-</p>
+  <p>
+    Dengan memahami dan mengimplementasikan konsep-konsep dasar OOP seperti class, object, constructor, validasi, dan encapsulation, pengembang dapat membangun sistem yang lebih robust, scalable, dan profesional.
+  </p>
 </footer>
 
 </div>
@@ -488,16 +477,11 @@ Dengan memahami dan mengimplementasikan konsep-konsep dasar OOP seperti class, o
   </div>
 </div>
 
-
-  <div id="2c81b3556ee53679d568178fb3799329" class="modal">
+<div id="2c81b3556ee53679d568178fb3799329" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('2c81b3556ee53679d568178fb3799329')">&times;</span>
     <iframe src="https://dartpad.dev/?id=2c81b3556ee53679d568178fb3799329&null_safety=true&run=true"></iframe>
   </div>
-</div>
-
-
-
 </div>
 
 <script>
@@ -521,8 +505,3 @@ window.onclick = function(event){
 
 </body>
 </html>
-
-
-
-
-
