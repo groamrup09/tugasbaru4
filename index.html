@@ -585,7 +585,61 @@ void main() {
 
 
 
+<h2></h2>
+        <div class="">
+<pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
 
+class User {
+  String _username;
+  String _password;
+  String _email;
+
+  User(this._username, this._password, this._email);
+
+  // Getter untuk semua field
+  String get username => _username;
+  String get email => _email;
+
+  // Setter dengan validasi
+  set username(String v) {
+    if (v.length >= 5) {
+      _username = v;
+    } else {
+      print('Username min 5 karakter');
+    }
+  }
+
+  set password(String v) {
+    if (v.length >= 8) {
+      _password = v;
+    } else {
+      print('Password min 8 karakter');
+    }
+  }
+
+  set email(String v) {
+    if (v.contains('@')) {
+      _email = v;
+    } else {
+      print('Format email salah (Harus @)');
+    }
+  }
+
+  void info() => print('User: $_username, Pass: $_password, Email: $_email');
+}
+
+void main() {
+  var user = User('Azriel', '10001', 'admin.com');
+  user.username = 'Azrielmy';
+  user.password = 'thegreat1';
+  user.email = 'Azriel@gmail.com';
+  user.info();
+}
+</pre>
+        </div>
 
 
 
