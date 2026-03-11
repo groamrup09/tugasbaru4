@@ -227,7 +227,6 @@ void main() {
 // Nama   : Azriel Miracle Yuandre
 // Nim    : 251410024
 // Kelas  : Si2A
-
 import 'dart:convert';
 
 class Mobil {
@@ -244,7 +243,7 @@ class Mobil {
   }
 
   // Named constructor dengan parameter
-  Mobil.dariJson(Map&lt;String, dynamic&gt; json) {
+  Mobil.dariJson(Map<String, dynamic> json) {
     merk = json['merk'];
     tahun = json['tahun'];
   }
@@ -257,28 +256,28 @@ class Mobil {
 }
 
 void main() {
-  print('--- Demonstrasi Class Mobil ---');
+  print('--- PRAKTIKUM KELAS MOBIL ---');
 
-  // 1. Menggunakan constructor default (parameterized constructor)
-  var mobilA = Mobil('Mercedes', 2020);
-  print('Mobil A (constructor default): $mobilA');
+  // 1. Constructor default
+  var m1 = Mobil('Ferrari', 2022);
+  print('Mobil 1 (constructor default): $m1');
 
-  // 2. Menggunakan named constructor Mobil.baru()
-  var mobilB = Mobil.baru();
-  print('Mobil B (named constructor .baru): $mobilB');
+  // 2. Named constructor .baru
+  var m2 = Mobil.baru();
+  print('Mobil 2 (named constructor .baru): $m2');
 
-  // 3. Menggunakan named constructor Mobil.dariJson()
-  String jsonString = '{"merk": "Jaguar", "tahun": 2021}';
-  Map&lt;String, dynamic&gt; jsonData = jsonDecode(jsonString);
-  var mobilC = Mobil.dariJson(jsonData);
-  print('Mobil C (named constructor .dariJson): $mobilC');
+  // 3. Named constructor .dariJson
+  String dataJson = '{"merk": "Lamborghini", "tahun": 2023}';
+  Map<String, dynamic> jsonData = jsonDecode(dataJson);
+  var m3 = Mobil.dariJson(jsonData);
+  print('Mobil 3 (named constructor .dariJson): $m3');
 
-  // Contoh lain dengan named constructor Mobil.dariJson()
-  Map&lt;String, dynamic&gt; anotherJsonData = {'merk': 'Audi', 'tahun': 2022};
-  var mobilD = Mobil.dariJson(anotherJsonData);
-  print('Mobil D (named constructor .dariJson): $mobilD');
+  // 4. Contoh lain dengan .dariJson
+  Map<String, dynamic> dataLain = {'merk': 'Porsche', 'tahun': 2024};
+  var m4 = Mobil.dariJson(dataLain);
+  print('Mobil 4 (named constructor .dariJson): $m4');
 
-  print('\n--- Akhir Demonstrasi ---');
+  print('\n--- SELESAI DEMONSTRASI ---');
 }
   </pre>
 
