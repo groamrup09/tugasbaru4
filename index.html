@@ -195,6 +195,7 @@ void main() {
 </div>
 
   <div class="card">
+    <pre>
 JENIS-JENIS CONSTRUCTOR
 
 Dart menyediakan beberapa mekanisme inisialisasi objek untuk berbagai kebutuhan arsitektur:
@@ -208,6 +209,7 @@ Dart menyediakan beberapa mekanisme inisialisasi objek untuk berbagai kebutuhan 
 4. Constant Constructor: const ClassName()
 
 5. Factory Constructor: (Akan dibahas pada sesi lanjut)
+      </pre>
     
   </div>
 
@@ -286,19 +288,93 @@ void main() {
 <h2>3. Validasi Constructor (Mahasiswa)</h2>
 <div class="card">
   <p>
-    Validasi pada constructor merupakan teknik untuk memastikan bahwa data yang diberikan saat pembuatan object berada dalam kondisi yang benar (valid). 
-    Tanpa validasi, object berpotensi memiliki nilai yang tidak logis atau berada di luar batas yang diperbolehkan.
-  </p>
+    CONSTANT CONSTRUCTOR
 
-  <p>
-    Dalam contoh class <i>Mahasiswa</i>, validasi dilakukan terhadap nilai IPK agar tetap berada dalam rentang 0.0 hingga 4.0. 
-    Jika nilai yang dimasukkan berada di luar batas tersebut, sistem dapat memberikan peringatan atau menolak pembuatan object. 
-    Hal ini bertujuan menjaga konsistensi dan integritas data akademik.
+Konstruktor konstan digunakan untuk membuat objek yang immutable (tidak bisa diubah). Objek yang dibuat dengan const dan nilai yang sama akan menggunakan instance yang sama di memori, sehingga lebih efisien.
   </p>
+  
+  <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
 
+class Warna {
+  final int r, g, b;
+  const Warna(this.r, this.g, this.b);
+
+  @override
+  String toString() {
+    return 'Warna(r: $r, g: $g, b: $b)';
+  }
+}
+
+void main() {
+  const scarlet = Warna(255, 0, 0);
+  const scarlet = Warna(255, 0, 0); // Menggunakan instance yang sama di memory
+
+  print(scarlet);
+  print(scarlet);
+}
+  </pre>
+  
+  <button class="btn" onclick="openModal('d4d3e01d810cb35552170bf7317bd3ee')">
+    Lihat Kode
+  </button>
+</div>
+
+<h2>4. CONSTRUCTOR DENGAN INITIALIZER LIST</h2>
+<div class="card">
   <p>
-    Dengan menerapkan validasi pada constructor, kita memastikan bahwa setiap object yang dibuat sudah memenuhi aturan bisnis (business rule) sejak awal. 
-    Pendekatan ini mengurangi kemungkinan terjadinya error pada proses eksekusi program di tahap berikutnya.
+
+Initializer List digunakan untuk menginisialisasi field sebelum body konstruktor dijalankan. Ini sering digunakan untuk melakukan validasi atau transformasi data pada field final.
+  </p>
+  
+  <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
+
+class Titik {
+  final double x, y;
+
+  Titik(double x, double y)
+    : x = x.abs(),
+      y = y.abs() {
+    print('Titik dibuat di (${this.x}, ${this.y})'); // Using this.x and this.y to show the absolute values
+    
+  }
+}
+
+void main(){
+  // Contoh penggunaan class Titik
+  print('Membuat objek Titik pertama:');
+  var titik1 = Titik(3.0, 4.0); // x=3.0, y=4.0
+  print('Titik 1: x = ${titik1.x}, y = ${titik1.y}');
+
+  print('\nMembuat objek Titik kedua dengan nilai negatif:');
+  var titik2 = Titik(-5.0, 10.0); // x=5.0 (abs), y=10.0 (abs)
+  print('Titik 2: x = ${titik2.x}, y = ${titik2.y}');
+
+  print('\nMembuat objek Titik ketiga dengan nilai negatif di kedua koordinat:');
+  var titik3 = Titik(-1.5, -2.5); // x=1.5 (abs), y=2.5 (abs)
+  print('Titik 3: x = ${titik3.x}, y = ${titik3.y}');
+}
+
+  </pre>
+  
+  <button class="btn" onclick="openModal('fab6c5b75398c9d1315b8877725646cb')">
+    Lihat Kode
+  </button>
+</div>
+
+<h2>5.  PRAKTIK 1-MULTIPLE CONSTRUCTOR</h2>
+<div class="card">
+  <p>
+ 
+
+Latihan pembuatan kelas Mahasiswa dengan tiga jenis konstruktor berbeda untuk fleksibilitas instansiasi
+
+objek sesuai kebutuhan data:
   </p>
   
   <pre>
@@ -307,132 +383,60 @@ void main() {
 // Kelas  : Si2A
 
 class Mahasiswa {
-  String nama; 
-  String nim; 
-  double ipk;  
+  String? nama;
+  String? nim;
 
-  Mahasiswa(this.nama, this.nim, this.ipk);
+  Mahasiswa(this.nama, this.nim);
 
-  void tampilkanData() {
-    print('Nama : $nama');
-    print('NIM  : $nim');
-    print('IPK  : $ipk');
+  Mahasiswa.dariMap(Map<String, String> data) {
+    nama = data['nama'];
+    nim = data['nim'];
   }
+
+  Mahasiswa.tanpaNama() {
+    nama = 'Nor Name';
+    nim = '000001';
+  }
+
+  void info() => print('Mahasiswa: $nama, NIM: $nim');
 }
 
 void main() {
-  Mahasiswa mhs1 = Mahasiswa("Azriel Miracle Yuandre", "251410024", 3.98);
-  mhs1.tampilkanData();
+  var m1 = Mahasiswa('Azriel', '251410024');
+  var m2 = Mahasiswa.dariMap({'nama': 'Miracle', 'nim': '251410024'});
+  var m3 = Mahasiswa.tanpaNama();
+
+  m1.info();
+  m2.info();
+  m3.info();
 }
   </pre>
   
-  <button class="btn" onclick="openModal('44b739d4c8e40937611f40845e661707')">
+  <button class="btn" onclick="openModal('62dba7174bae5127cc47547a6984032c')">
     Lihat Kode
   </button>
 </div>
 
-<h2>4. Encapsulation (Person)</h2>
-<div class="card">
-  <p>
-    Encapsulation adalah teknik untuk menyembunyikan detail implementasi internal. Di Dart, kita menggunakan awalan underscore (_) untuk membuat attribute bersifat private, sehingga hanya bisa diakses melalui getter dan setter. 
-    Ini adalah prinsip fundamental dalam OOP yang bertujuan melindungi data internal objek dari akses langsung yang tidak sah. 
-    Dengan membatasi akses melalui mekanisme getter dan setter, integritas data dapat dijaga dan kesalahan manipulasi dapat diminimalisir. 
-    Encapsulation meningkatkan keamanan serta stabilitas sistem dalam skala besar.
-  </p>
-  
-  <pre>
-// Nama   : Azriel Miracle Yuandre
-// Nim    : 251410024
-// Kelas  : Si2A
+<h2>PENGANTAR ENKAPSULASI</h2>
+    <div class="card">
+      <pre>
+Konsep: Menyembunyikan detail implementasi dari luar.
 
-class Person {
-  String _name; 
-  int age;    
+Tujuan
 
-  Person(this._name, this.age);
+Keamanan data
 
-  void setName(String name) => _name = name;
-  
-  String getName() => _name;
-}
+Kontrol akses
 
-void main() {
-  Person person = Person("Azriel Miracle Yuandre", 20);
+Fleksibilitas perubahan
 
-  print(person.age); 
-  person.setName("Azriel Miracle Yuandre");
-  print(person.getName()); 
-}
-  </pre>
-  
-  <button class="btn" onclick="openModal('d220dd26797081f9eb41f7a14d4e33df')">
-    Lihat Kode
-  </button>
-</div>
+Cara di Dart: Menggunakan underscore () untuk private members.
 
-<h2>5. Named Parameter (Produk)</h2>
-<div class="card">
-  <p>
-    Latihan lanjutan menggunakan Named Parameters dan operator required. Teknik ini membuat pembuatan objek menjadi lebih deskriptif dan aman karena compiler akan memberikan peringatan jika data wajib tidak diisi.
-    Selain itu, Dart juga mendukung penggunaan <b>Named Parameter</b>, yaitu teknik pengisian parameter berdasarkan nama variabel. 
-    Penggunaan keyword <b>required</b> memastikan bahwa parameter penting tidak boleh kosong saat proses instansiasi objek dilakukan. 
-    Pendekatan ini meningkatkan kejelasan kode (readability) dan mengurangi potensi kesalahan input.
-  </p>
-  
-  <pre>
-// Nama   : Azriel Miracle Yuandre
-// Nim    : 251410024
-// Kelas  : Si2A
+Public: Dapat diakses dari mana saja (default).
 
-class Produk {
-  final String id, nama; 
-  final double harga; 
-  final int stok;   
-  final String kategori;
-
-  Produk({
-    required this.id,
-    required this.nama,
-    required this.harga,
-    this.stok = 0,
-    this.kategori = 'Umum',
-  });
-}
-
-void main() {
-  Produk laptop = Produk(
-    id: "P003",
-    nama: "Laptop Asus",
-    harga: 15000000,
-    stok: 15,
-    kategori: "Elektronik",
-  );
-
-  Produk smartphone = Produk(
-    id: "P004",
-    nama: "Smartphone Samsung",
-    harga: 12000000,
-    stok: 25,
-  );
-
-  Produk kamera = Produk(
-    id: "P005",
-    nama: "Kamera Mirrorless",
-    harga: 20000000,
-  );
-
-  print(laptop.nama); 
-  print(smartphone.nama); 
-  print(kamera.nama); 
-}
-  </pre>
-  
-  <button class="btn" onclick="openModal('b803d969482da4165193e77c5295c795')">
-    Lihat Kode
-  </button>
-</div>
-
-<h2>QUIZ BONUS HEWAN CLASS</h2>
+Private Hanya dapat diakses dalam file yang sama.
+        </pre>
+    </div>
 <div class="card">
   <pre>
 // Nama   : Azriel Miracle Yuandre
@@ -508,24 +512,24 @@ void main() {
   </div>
 </div>
 
-<div id="44b739d4c8e40937611f40845e661707" class="modal">
+<div id="d4d3e01d810cb35552170bf7317bd3ee" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('44b739d4c8e40937611f40845e661707')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=44b739d4c8e40937611f40845e661707&null_safety=true&run=true"></iframe>
+    <span class="close" onclick="closeModal('d4d3e01d810cb35552170bf7317bd3ee')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=d4d3e01d810cb35552170bf7317bd3ee&null_safety=true&run=true"></iframe>
   </div>
 </div>
 
-<div id="d220dd26797081f9eb41f7a14d4e33df" class="modal">
+<div id="fab6c5b75398c9d1315b8877725646cb" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('d220dd26797081f9eb41f7a14d4e33df')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=d220dd26797081f9eb41f7a14d4e33df&null_safety=true&run=true"></iframe>
+    <span class="close" onclick="closeModal('fab6c5b75398c9d1315b8877725646cb')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=fab6c5b75398c9d1315b8877725646cb&null_safety=true&run=true"></iframe>
   </div>
 </div>
 
-<div id="b803d969482da4165193e77c5295c795" class="modal">
+<div id="62dba7174bae5127cc47547a6984032c" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('b803d969482da4165193e77c5295c795')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=b803d969482da4165193e77c5295c795&null_safety=true&run=true"></iframe>
+    <span class="close" onclick="closeModal('62dba7174bae5127cc47547a6984032c')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=62dba7174bae5127cc47547a6984032c&null_safety=true&run=true"></iframe>
   </div>
 </div>
 
