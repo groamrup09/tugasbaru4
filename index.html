@@ -639,9 +639,58 @@ void main() {
   user.info();
 }
 </pre>
+           <button class="btn" onclick="openModal('fab6c5b75398c9d1315b8877725646cb')">
+    Lihat Kode
+  </button>
         </div>
 
+<h2>Studi Kasus sistem Login</h2>
+        <div class="card">
+<pre>
+          
+  class User {
+  String _username;
+  String _password;
 
+  User(this._username, this._password);
+  String get username => _username;
+
+  bool login(String username, String password) {
+    return _username == username && _password == password;
+  }
+
+  void gantiPassword(String lama, String baru) {
+    if (_password == lama) {
+      if (baru.length >= 8) {
+        _password = baru;
+        print('Password Anda berhasil diubah.');
+      } else {
+        print('Gagal: Password baru minimal 10 karakter.');
+      }
+    } else {
+      print('Gagal: Password lama tidak cocok.');
+    }
+  }
+}
+
+void main() {
+  print('--- Inisialisasi User ---');
+  final User user1 = User('admin_Azriel', 'securePass123');
+  
+  print('--- Uji Coba Login ---');
+  if (user1.login('admin_Azriel', 'securePass123')) {
+    print('Login Anda Berhasil!');
+  }
+
+  print('\n--- Uji Coba Ganti Password ---');
+  user1.gantiPassword('securePass123', 'newSecurePass456');
+  user1.gantiPassword('wrongPass', 'anyPass'); // Gagal
+}
+</pre>
+           <button class="btn" onclick="openModal('dcf4b00cade35460b7a7dbcea44561b3')">
+    Lihat Kode
+  </button>
+        </div>
 
 
 
@@ -750,17 +799,17 @@ void main() {
   </div>
 </div>
 
-<div id="fab6c5b75398c9d1315b8877725646cb" class="modal">
+<div id="1ce7965bdae8cb30413f2126fd140bbc" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('fab6c5b75398c9d1315b8877725646cb')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=fab6c5b75398c9d1315b8877725646cb&null_safety=true&run=true"></iframe>
+    <span class="close" onclick="closeModal('1ce7965bdae8cb30413f2126fd140bbc')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=1ce7965bdae8cb30413f2126fd140bbc&null_safety=true&run=true"></iframe>
   </div>
 </div>
 
-<div id="62dba7174bae5127cc47547a6984032c" class="modal">
+<div id="dcf4b00cade35460b7a7dbcea44561b3" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('62dba7174bae5127cc47547a6984032c')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=62dba7174bae5127cc47547a6984032c&null_safety=true&run=true"></iframe>
+    <span class="close" onclick="closeModal('dcf4b00cade35460b7a7dbcea44561b3')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=dcf4b00cade35460b7a7dbcea44561b3&null_safety=true&run=true"></iframe>
   </div>
 </div>
 
