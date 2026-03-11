@@ -194,7 +194,7 @@ class Buku {
 }
 
 void main() {
-  var buku1 = Buku('Belajar Dart OOP');
+  var buku1 = Buku('Belajar Dart OOP jilid 1 Bersama Babe');
   print('Judul Buku: ${buku1.judul}');
 }
   </pre>
@@ -310,12 +310,12 @@ class Warna {
 }
 
 void main() {
-  const merah = Warna(255, 0, 0);
-  const merahLagi = Warna(255, 0, 0); // Menggunakan instance yang sama di memory
+  const scarlet = Warna(255, 0, 0);
+  const scarletLagi = Warna(254, 0, 0); 
 
-  print(merah);
-  print(merahLagi);
-  print('Apakah instance sama? ${identical(merah, merahLagi)}');
+  print(scarlet);
+  print(scarletLagi); 
+  print('Apakah instance sama? ${identical(scarlet, scarletLagi)}'); 
 }
   </pre>
 
@@ -348,16 +348,16 @@ class Titik {
 
 void main(){
   print('Membuat objek Titik pertama:');
-  var titik1 = Titik(3.0, 4.0);
-  print('Titik 1: x = ${titik1.x}, y = ${titik1.y}');
+  var t1 = Titik(7.5, 2.0); 
+  print('Titik 1: x = ${t1.x}, y = ${t1.y}');
 
   print('\nMembuat objek Titik kedua dengan nilai negatif:');
-  var titik2 = Titik(-5.0, 10.0);
-  print('Titik 2: x = ${titik2.x}, y = ${titik2.y}');
+  var t2 = Titik(-8.0, 3.5); 
+  print('Titik 2: x = ${t2.x}, y = ${t2.y}');
 
   print('\nMembuat objek Titik ketiga dengan nilai negatif di kedua koordinat:');
-  var titik3 = Titik(-1.5, -2.5);
-  print('Titik 3: x = ${titik3.x}, y = ${titik3.y}');
+  var t3 = Titik(-2.0, -4.0); 
+  print('Titik 3: x = ${t3.x}, y = ${t3.y}');
 }
   </pre>
 
@@ -384,7 +384,7 @@ class Mahasiswa {
 
   Mahasiswa(this.nama, this.nim);
 
-  Mahasiswa.dariMap(Map&lt;String, String&gt; data) {
+  Mahasiswa.dariMap(Map<String, String> data) {
     nama = data['nama'];
     nim = data['nim'];
   }
@@ -398,13 +398,13 @@ class Mahasiswa {
 }
 
 void main() {
-  var m1 = Mahasiswa('Azriel', '251410024');
-  var m2 = Mahasiswa.dariMap({'nama': 'Miracle', 'nim': '251410024'});
-  var m3 = Mahasiswa.tanpaNama();
+  var m1 = Mahasiswa('Azriel', '251410024'); 
+  var m2 = Mahasiswa.dariMap({'nama': 'Miracle', 'nim': '251410024'}); 
+  var m3 = Mahasiswa.tanpaNama(); 
 
-  m1.info();
-  m2.info();
-  m3.info();
+  m1.info(); 
+  m2.info(); 
+  m3.info(); 
 }
   </pre>
 
@@ -433,17 +433,17 @@ void main() {
 // Kelas  : Si2A 
 
 class Person {
-  String _name; // Private: Hanya bisa diakses di file ini
-  int age;      // Public: Dapat diakses bebas
+  String _nama; 
+  int umur;      
 
-  Person(this._name, this.age);
+  Person(this._nama, this.umur); 
 
-  void info() => print('Nama: $_name, Umur: $age');
+  void info() => print('Nama: $_nama, Umur: $umur'); 
 }
 
 void main() {
-  var p = Person('Azriel Miracle Yuandre', 20);
-  p.info();
+  var p1 = Person('Azriel Miracle Yuandre', 20); 
+  p1.info(); 
 }
   </pre>
 
@@ -469,33 +469,33 @@ void main() {
 // Kelas  : Si2A 
 
 class Person {
-  String _name;
-  int age;
+  String _nama;
+  int umur;
   
-  Person(this._name, this.age);
+  Person(this._nama, this.umur);
   
-  set setName1(String name) {
-    _name = name;
+  set setNama(String nama) {
+    _nama = nama;
   }
 
-  void setName(String name) {
-    _name = name;
+  void ubahNama(String nama) {
+    _nama = nama;
   }
 
-  String getName() {
-    return _name;
+  String getNama() {
+    return _nama;
   }
 }
 
 void main() {
-  Person person = Person("Azriel Miracle Yuandre", 20);
-  print('Umur: ${person.age}');
+  Person p1 = Person("Azriel Miracle Yuandre", 20);
+  print('Umur: ${p1.umur}');
   
-  person.setName('Miracle');
-  print('Nama (via Method): ${person.getName()}');
+  p1.ubahNama('Miracle');
+  print('Nama (via Method): ${p1.getNama()}');
   
-  person.setName1 = 'Azriel Miracle Yuandre';
-  print('Nama (via Setter): ${person.getName()}');
+  p1.setNama = 'Azriel Miracle Yuandre';
+  print('Nama (via Setter): ${p1.getNama()}');
 }
   </pre>
 
@@ -546,20 +546,20 @@ class Produk {
 }
 
 void main() {
-  var produk1 = Produk('Asus ROG', 3500.0);
+  var p1 = Produk('Asus ROG', 3500.0);
 
   print('--- Informasi Produk Awal ---');
-  print('Nama Produk: ${produk1.nama}');
-  print('Harga Produk: Rp ${produk1.harga}');
+  print('Nama Produk: ${p1.nama}');
+  print('Harga Produk: Rp ${p1.harga}');
 
   print('\n--- Memperbarui Produk ---');
-  produk1.nama = 'Monitor 144hz';
-  produk1.harga = 12000.0;
-  print('Nama (setelah update): ${produk1.nama}');
+  p1.nama = 'Monitor 144hz';
+  p1.harga = 12000.0;
+  print('Nama (setelah update): ${p1.nama}');
 
   print('\n--- Menguji Validasi Setter ---');
-  produk1.nama = 'TV'; // Gagal (kurang dari 3 karakter)
-  produk1.harga = -1000.0; // Gagal (kurang dari 0)
+  p1.nama = 'Kulkas'; // Gagal (kurang dari 3 karakter)
+  p1.harga = -1000.0; // Gagal (kurang dari 0)
 }
   </pre>
 
@@ -591,7 +591,7 @@ class User {
     if (v.length >= 5) {
       _username = v;
     } else {
-      print('Username minimal 5 karakter');
+      print('Username minimal 7 karakter');
     }
   }
 
@@ -599,7 +599,7 @@ class User {
     if (v.length >= 8) {
       _password = v;
     } else {
-      print('Password minimal 8 karakter');
+      print('Password minimal 20 karakter');
     }
   }
 
@@ -615,11 +615,11 @@ class User {
 }
 
 void main() {
-  var user = User('Azriel', '10001', 'admin.com');
-  user.username = 'Azrielmy';
-  user.password = 'thegreat1';
-  user.email = 'Azriel@gmail.com';
-  user.info();
+  var u1 = User('Azriel', '10001', 'admin.com');
+  u1.username = 'Azrielmy';
+  u1.password = 'thegreat1';
+  u1.email = 'Azriel@gmail.com';
+  u1.info();
 }
   </pre>
 
@@ -662,17 +662,17 @@ class User {
 }
 
 void main() {
-  print('--- Inisialisasi User ---');
-  final User user1 = User('admin_Azriel', 'securePass123');
+  print('--- MEMBUAT AKUN BARU ---');
+  final User u1 = User('super_Miracle', 'rahasia123');
   
-  print('--- Uji Coba Login ---');
-  if (user1.login('admin_Azriel', 'securePass123')) {
-    print('Login Anda Berhasil!');
+  print('--- PROSES VERIFIKASI LOGIN ---');
+  if (u1.login('super_Miracle', 'rahasia123')) {
+    print('Selamat datang! Anda berhasil masuk.');
   }
 
-  print('\n--- Uji Coba Ganti Password ---');
-  user1.gantiPassword('securePass123', 'newSecurePass456');
-  user1.gantiPassword('wrongPass', 'anyPass'); // Gagal
+  print('\n--- PERUBAHAN KATA SANDI ---');
+  u1.gantiPassword('rahasia123', 'superSecret789');
+  u1.gantiPassword('salahPass', 'cobaCoba'); // Percobaan gagal
 }
   </pre>
 
@@ -716,10 +716,13 @@ class RekeningBank {
 }
 
 void main() {
-  var bank = RekeningBank('9837-10009', 23000000);
-  bank.cekSaldo();
-  bank.tarik(500000);
-  bank.cekSaldo();
+  print('--- TRANSAKSI PERTAMA ---');
+  var rekeningSaya = RekeningBank('1234-5678-90', 5000000);
+  rekeningSaya.cekSaldo();
+  
+  print('\n--- MELAKUKAN PENARIKAN ---');
+  rekeningSaya.tarik(1000000);
+  rekeningSaya.cekSaldo();
 }
   </pre>
 
