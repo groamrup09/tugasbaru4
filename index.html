@@ -464,7 +464,7 @@ void main() {
 
 <h2>Getter And Setter</h2>
       <div class="card">
-<prep>
+<pre>
   Getter: Memungkinkan membaca data private dengan kontrol.
 
 Sintaks 1: tipeData get namaGetter => _field; (Arrow)
@@ -476,10 +476,10 @@ Setter: Memungkinkan modifikasi data dengan validasi.
 Sintaks 1: set namaSetter (value) {... (Set Keyword)
 
 Sintaks 2: void namaSetter (value) {...} (Method Approach
-</prep>
+</pre>
 
       <div class="card">
-        <prep>
+        <pre>
 
 // Nama   : Azriel Miracle Yuandre
 // Nim    : 251410024
@@ -522,10 +522,65 @@ void main() {
       </div>
 
 
-<h2></h2>
+<h2>CONTOH-IMPLEMENTASI GETTER & SETTER</h2>
 <div class="card">
+<pre>
 
+Meningkatkan integritas data dengan validasi nilai pada Produk sebelum disimpan:
 
+Nama produk minimal 3 karakter
+
+Harga produk harus lebih besar dari O
+</pre>
+<pre>
+  class Produk {
+  String _nama;
+  double _harga;
+  
+  Produk(this._nama, this._harga);
+  
+  String get nama => _nama;
+  double get harga => _harga;
+  
+  set nama(String value) {
+    if (value.length >= 3) {
+      _nama = value;
+    } else {
+      print('Gagal memperbarui nama: Nama harus memiliki minimal 3 karakter.');
+    }
+  }
+  
+  set harga(double value) {
+    if (value > 0) {
+      _harga = value;
+    } else {
+      print('Gagal memperbarui harga: Harga harus lebih besar dari 0.');
+    }
+  }
+}
+
+void main() {
+  var produk1 = Produk('Asus ROG', 3500.0);
+
+  print('--- Informasi Produk Awal ---');
+  print('Nama Produk: ${produk1.nama}');
+  print('Harga Produk: Rp ${produk1.harga}');
+
+  print('\n--- Memperbarui Produk ---');
+  produk1.nama = 'Monitor 144hz';
+  produk1.harga = 12000.0;
+  print('Nama (setelah update): ${produk1.nama}');
+
+  print('\n--- Menguji Validasi Setter ---');
+  produk1.nama = 'Kulkas'; // Gagal
+  produk1.harga = -1000.0; // Gagal
+}
+
+  
+</pre>
+   <button class="btn" onclick="openModal('2fa7a88295c0b70c3739a64acf3e6609')">
+    Lihat Kode
+  </button>
 </div>
 
 
@@ -634,10 +689,10 @@ void main() {
   </div>
 </div>
 
-<div id="d4d3e01d810cb35552170bf7317bd3ee" class="modal">
+<div id="2fa7a88295c0b70c3739a64acf3e6609" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('d4d3e01d810cb35552170bf7317bd3ee')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=d4d3e01d810cb35552170bf7317bd3ee&null_safety=true&run=true"></iframe>
+    <span class="close" onclick="closeModal('2fa7a88295c0b70c3739a64acf3e6609')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=2fa7a88295c0b70c3739a64acf3e6609&null_safety=true&run=true"></iframe>
   </div>
 </div>
 
