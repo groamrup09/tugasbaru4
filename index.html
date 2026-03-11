@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+<title>Laporan OOP Dart</title>
 
 <style>
 body{
@@ -149,6 +149,8 @@ pre {
   border: 1px solid #e2e8f0;
   font-family: 'Courier New', monospace;
   font-size: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 </style>
 </head>
@@ -194,31 +196,22 @@ void main() {
   </button>
 </div>
 
-  <div class="card">
-    <pre>
-JENIS-JENIS CONSTRUCTOR
+<div class="card">
+  <h3>JENIS-JENIS CONSTRUCTOR</h3>
+  <p>Dart menyediakan beberapa mekanisme inisialisasi objek untuk berbagai kebutuhan arsitektur:</p>
+  <ol>
+    <li><b>Default Constructor:</b> ClassName()</li>
+    <li><b>Named Constructor:</b> ClassName.name()</li>
+    <li><b>Parameterized Constructor:</b> ClassName(this.param)</li>
+    <li><b>Constant Constructor:</b> const ClassName()</li>
+    <li><b>Factory Constructor:</b> (Akan dibahas pada sesi lanjut)</li>
+  </ol>
+</div>
 
-Dart menyediakan beberapa mekanisme inisialisasi objek untuk berbagai kebutuhan arsitektur:
-
-1. Default Constructor: ClassNane()
-
-2. Named Constructor: Classhame.nana()
-
-3. Parameterized Constructor: ClassName(this.parat
-
-4. Constant Constructor: const ClassName()
-
-5. Factory Constructor: (Akan dibahas pada sesi lanjut)
-      </pre>
-    
-  </div>
-
-<h2>2.   NAMED CONSTRUCTOR-CONTOH DETAIL</h2>
+<h2>2. NAMED CONSTRUCTOR - CONTOH DETAIL</h2>
 <div class="card">
   <p>
-
-
-Dart memungkinkan pembuatan lebih dari satu konstruktor dalam satu kelas menggunakan Namest Constructor. Ini sangat berguna untuk memberikan cara alternatif dalam menginisialisasi objek, seperti dari data JSON.
+    Dart memungkinkan pembuatan lebih dari satu konstruktor dalam satu kelas menggunakan Named Constructor. Ini sangat berguna untuk memberikan cara alternatif dalam menginisialisasi objek, seperti dari data JSON.
   </p>
   
   <pre>
@@ -242,7 +235,7 @@ class Mobil {
   }
 
   // Named constructor dengan parameter
-  Mobil.dariJson(Map<String, dynamic> json) {
+  Mobil.dariJson(Map&lt;String, dynamic&gt; json) {
     merk = json['merk'];
     tahun = json['tahun'];
   }
@@ -267,12 +260,12 @@ void main() {
 
   // 3. Menggunakan named constructor Mobil.dariJson()
   String jsonString = '{"merk": "Jaguar", "tahun": 2021}';
-  Map<String, dynamic> jsonData = jsonDecode(jsonString);
+  Map&lt;String, dynamic&gt; jsonData = jsonDecode(jsonString);
   var mobilC = Mobil.dariJson(jsonData);
   print('Mobil C (named constructor .dariJson): $mobilC');
 
   // Contoh lain dengan named constructor Mobil.dariJson()
-  Map<String, dynamic> anotherJsonData = {'merk': 'Audi', 'tahun': 2022};
+  Map&lt;String, dynamic&gt; anotherJsonData = {'merk': 'Audi', 'tahun': 2022};
   var mobilD = Mobil.dariJson(anotherJsonData);
   print('Mobil D (named constructor .dariJson): $mobilD');
 
@@ -285,12 +278,10 @@ void main() {
   </button>
 </div>
 
-<h2>3. Validasi Constructor (Mahasiswa)</h2>
+<h2>3. Constant Constructor</h2>
 <div class="card">
   <p>
-    CONSTANT CONSTRUCTOR
-
-Konstruktor konstan digunakan untuk membuat objek yang immutable (tidak bisa diubah). Objek yang dibuat dengan const dan nilai yang sama akan menggunakan instance yang sama di memori, sehingga lebih efisien.
+    Konstruktor konstan digunakan untuk membuat objek yang immutable (tidak bisa diubah). Objek yang dibuat dengan const dan nilai yang sama akan menggunakan instance yang sama di memori, sehingga lebih efisien.
   </p>
   
   <pre>
@@ -309,11 +300,12 @@ class Warna {
 }
 
 void main() {
-  const scarlet = Warna(255, 0, 0);
-  const scarlet = Warna(255, 0, 0); // Menggunakan instance yang sama di memory
+  const merah = Warna(255, 0, 0);
+  const merahLagi = Warna(255, 0, 0); // Menggunakan instance yang sama di memory
 
-  print(scarlet);
-  print(scarlet);
+  print(merah);
+  print(merahLagi);
+  print('Apakah instance sama? ${identical(merah, merahLagi)}');
 }
   </pre>
   
@@ -325,8 +317,7 @@ void main() {
 <h2>4. CONSTRUCTOR DENGAN INITIALIZER LIST</h2>
 <div class="card">
   <p>
-
-Initializer List digunakan untuk menginisialisasi field sebelum body konstruktor dijalankan. Ini sering digunakan untuk melakukan validasi atau transformasi data pada field final.
+    Initializer List digunakan untuk menginisialisasi field sebelum body konstruktor dijalankan. Ini sering digunakan untuk melakukan validasi atau transformasi data pada field final.
   </p>
   
   <pre>
@@ -340,26 +331,23 @@ class Titik {
   Titik(double x, double y)
     : x = x.abs(),
       y = y.abs() {
-    print('Titik dibuat di (${this.x}, ${this.y})'); // Using this.x and this.y to show the absolute values
-    
+    print('Titik dibuat di (${this.x}, ${this.y})');
   }
 }
 
 void main(){
-  // Contoh penggunaan class Titik
   print('Membuat objek Titik pertama:');
-  var titik1 = Titik(3.0, 4.0); // x=3.0, y=4.0
+  var titik1 = Titik(3.0, 4.0);
   print('Titik 1: x = ${titik1.x}, y = ${titik1.y}');
 
   print('\nMembuat objek Titik kedua dengan nilai negatif:');
-  var titik2 = Titik(-5.0, 10.0); // x=5.0 (abs), y=10.0 (abs)
+  var titik2 = Titik(-5.0, 10.0);
   print('Titik 2: x = ${titik2.x}, y = ${titik2.y}');
 
   print('\nMembuat objek Titik ketiga dengan nilai negatif di kedua koordinat:');
-  var titik3 = Titik(-1.5, -2.5); // x=1.5 (abs), y=2.5 (abs)
+  var titik3 = Titik(-1.5, -2.5);
   print('Titik 3: x = ${titik3.x}, y = ${titik3.y}');
 }
-
   </pre>
   
   <button class="btn" onclick="openModal('fab6c5b75398c9d1315b8877725646cb')">
@@ -367,14 +355,10 @@ void main(){
   </button>
 </div>
 
-<h2>5.  PRAKTIK 1-MULTIPLE CONSTRUCTOR</h2>
+<h2>5. PRAKTIK 1 - MULTIPLE CONSTRUCTOR</h2>
 <div class="card">
   <p>
- 
-
-Latihan pembuatan kelas Mahasiswa dengan tiga jenis konstruktor berbeda untuk fleksibilitas instansiasi
-
-objek sesuai kebutuhan data:
+    Latihan pembuatan kelas Mahasiswa dengan tiga jenis konstruktor berbeda untuk fleksibilitas instansiasi objek sesuai kebutuhan data:
   </p>
   
   <pre>
@@ -388,13 +372,13 @@ class Mahasiswa {
 
   Mahasiswa(this.nama, this.nim);
 
-  Mahasiswa.dariMap(Map<String, String> data) {
+  Mahasiswa.dariMap(Map&lt;String, String&gt; data) {
     nama = data['nama'];
     nim = data['nim'];
   }
 
   Mahasiswa.tanpaNama() {
-    nama = 'Nor Name';
+    nama = 'No Name';
     nim = '000001';
   }
 
@@ -418,24 +402,18 @@ void main() {
 </div>
 
 <h2>PENGANTAR ENKAPSULASI</h2>
-    <div class="card">
-      <pre>
-Konsep: Menyembunyikan detail implementasi dari luar.
-
-Tujuan
-
-Keamanan data
-
-Kontrol akses
-
-Fleksibilitas perubahan
-
-Cara di Dart: Menggunakan underscore () untuk private members.
-
-Public: Dapat diakses dari mana saja (default).
-
-Private Hanya dapat diakses dalam file yang sama.
-        </pre>
+<div class="card">
+  <h3>Konsep Enkapsulasi</h3>
+  <p><b>Konsep:</b> Menyembunyikan detail implementasi dari luar.</p>
+  <p><b>Tujuan:</b></p>
+  <ul>
+    <li>Keamanan data</li>
+    <li>Kontrol akses</li>
+    <li>Fleksibilitas perubahan</li>
+  </ul>
+  <p><b>Cara di Dart:</b> Menggunakan underscore (_) untuk private members.</p>
+  <p><b>Public:</b> Dapat diakses dari mana saja (default).</p>
+  <p><b>Private:</b> Hanya dapat diakses dalam file yang sama.</p>
 
   <pre>
 // Nama   : Azriel Miracle Yuandre
@@ -463,32 +441,25 @@ void main() {
 </div>
 
 <h2>Getter And Setter</h2>
-      <div class="card">
-<pre>
-  Getter: Memungkinkan membaca data private dengan kontrol.
+<div class="card">
+  <h3>Pengertian Getter dan Setter</h3>
+  <p><b>Getter:</b> Memungkinkan membaca data private dengan kontrol.</p>
+  <p>Sintaks 1: <code>tipeData get namaGetter => _field;</code> (Arrow)</p>
+  <p>Sintaks 2: <code>tipeData namaGetter() { return _field; }</code> (Block)</p>
+  
+  <p><b>Setter:</b> Memungkinkan modifikasi data dengan validasi.</p>
+  <p>Sintaks 1: <code>set namaSetter(value) {...}</code> (Set Keyword)</p>
+  <p>Sintaks 2: <code>void namaSetter(value) {...}</code> (Method Approach)</p>
 
-Sintaks 1: tipeData get namaGetter => _field; (Arrow)
-
-Sintaks 2: tipeData namaGetter() { return _field; } (Block)
-
-Setter: Memungkinkan modifikasi data dengan validasi.
-
-Sintaks 1: set namaSetter (value) {... (Set Keyword)
-
-Sintaks 2: void namaSetter (value) {...} (Method Approach
-</pre>
-
-      <div class="card">
-        <pre>
-
+  <pre>
 // Nama   : Azriel Miracle Yuandre
 // Nim    : 251410024
 // Kelas  : Si2A 
 
-
-  class Person {
+class Person {
   String _name;
   int age;
+  
   Person(this._name, this.age);
   
   set setName1(String name) {
@@ -514,26 +485,29 @@ void main() {
   person.setName1 = 'Azriel Miracle Yuandre';
   print('Nama (via Setter): ${person.getName()}');
 }
-        </prep>
+  </pre>
 
- <button class="btn" onclick="openModal('3dd02b01404a0dc2e8fa0251ab10de6d')">
+  <button class="btn" onclick="openModal('3dd02b01404a0dc2e8fa0251ab10de6d')">
     Lihat Kode
   </button>
-      </div>
+</div>
 
-
-<h2>CONTOH-IMPLEMENTASI GETTER & SETTER</h2>
+<h2>CONTOH IMPLEMENTASI GETTER & SETTER</h2>
 <div class="card">
-<pre>
+  <p>
+    Meningkatkan integritas data dengan validasi nilai pada Produk sebelum disimpan:
+  </p>
+  <ul>
+    <li>Nama produk minimal 3 karakter</li>
+    <li>Harga produk harus lebih besar dari 0</li>
+  </ul>
+  
+  <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
 
-Meningkatkan integritas data dengan validasi nilai pada Produk sebelum disimpan:
-
-Nama produk minimal 3 karakter
-
-Harga produk harus lebih besar dari O
-</pre>
-<pre>
-  class Produk {
+class Produk {
   String _nama;
   double _harga;
   
@@ -572,22 +546,19 @@ void main() {
   print('Nama (setelah update): ${produk1.nama}');
 
   print('\n--- Menguji Validasi Setter ---');
-  produk1.nama = 'Kulkas'; // Gagal
-  produk1.harga = -1000.0; // Gagal
+  produk1.nama = 'TV'; // Gagal (kurang dari 3 karakter)
+  produk1.harga = -1000.0; // Gagal (kurang dari 0)
 }
-
+  </pre>
   
-</pre>
-   <button class="btn" onclick="openModal('2fa7a88295c0b70c3739a64acf3e6609')">
+  <button class="btn" onclick="openModal('2fa7a88295c0b70c3739a64acf3e6609')">
     Lihat Kode
   </button>
 </div>
 
-
-
-<h2></h2>
-        <div class="">
-<pre>
+<h2>Praktik Enkapsulasi - Class User</h2>
+<div class="card">
+  <pre>
 // Nama   : Azriel Miracle Yuandre
 // Nim    : 251410024
 // Kelas  : Si2A
@@ -608,7 +579,7 @@ class User {
     if (v.length >= 5) {
       _username = v;
     } else {
-      print('Username min 5 karakter');
+      print('Username minimal 5 karakter');
     }
   }
 
@@ -616,7 +587,7 @@ class User {
     if (v.length >= 8) {
       _password = v;
     } else {
-      print('Password min 8 karakter');
+      print('Password minimal 8 karakter');
     }
   }
 
@@ -624,7 +595,7 @@ class User {
     if (v.contains('@')) {
       _email = v;
     } else {
-      print('Format email salah (Harus @)');
+      print('Format email salah (Harus mengandung @)');
     }
   }
 
@@ -638,21 +609,26 @@ void main() {
   user.email = 'Azriel@gmail.com';
   user.info();
 }
-</pre>
-           <button class="btn" onclick="openModal('1ce7965bdae8cb30413f2126fd140bbc')">
+  </pre>
+  
+  <button class="btn" onclick="openModal('1ce7965bdae8cb30413f2126fd140bbc')">
     Lihat Kode
   </button>
-        </div>
+</div>
 
-<h2>Studi Kasus sistem Login</h2>
-        <div class="card">
-<pre>
-          
-  class User {
+<h2>Studi Kasus Sistem Login</h2>
+<div class="card">
+  <pre>
+// Nama   : Azriel Miracle Yuandre
+// Nim    : 251410024
+// Kelas  : Si2A
+
+class User {
   String _username;
   String _password;
 
   User(this._username, this._password);
+  
   String get username => _username;
 
   bool login(String username, String password) {
@@ -665,7 +641,7 @@ void main() {
         _password = baru;
         print('Password Anda berhasil diubah.');
       } else {
-        print('Gagal: Password baru minimal 10 karakter.');
+        print('Gagal: Password baru minimal 8 karakter.');
       }
     } else {
       print('Gagal: Password lama tidak cocok.');
@@ -686,16 +662,17 @@ void main() {
   user1.gantiPassword('securePass123', 'newSecurePass456');
   user1.gantiPassword('wrongPass', 'anyPass'); // Gagal
 }
-</pre>
-           <button class="btn" onclick="openModal('dcf4b00cade35460b7a7dbcea44561b3')">
+  </pre>
+  
+  <button class="btn" onclick="openModal('dcf4b00cade35460b7a7dbcea44561b3')">
     Lihat Kode
   </button>
-        </div>
+</div>
 
-        <h2>Latihan Bank</h2>
-        <div class="card">
-        <pre>
- // Nama   : Azriel Miracle Yuandre
+<h2>Latihan Bank</h2>
+<div class="card">
+  <pre>
+// Nama   : Azriel Miracle Yuandre
 // Nim    : 251410024
 // Kelas  : Si2A
 
@@ -732,29 +709,13 @@ void main() {
   bank.tarik(500000);
   bank.cekSaldo();
 }
-        </pre>
+  </pre>
 
- <button class="btn" onclick="openModal('a9c8ab069ebb9a3ec290ddb07e3a044e')">
+  <button class="btn" onclick="openModal('a9c8ab069ebb9a3ec290ddb07e3a044e')">
     Lihat Kode
   </button>
-        </div>
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-      </div>
 <footer>
   <h2>Kesimpulan</h2>
 
@@ -789,80 +750,78 @@ void main() {
 <div id="11dc282384908ce64180992dafa3c188" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('11dc282384908ce64180992dafa3c188')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=11dc282384908ce64180992dafa3c188&null_safety=true&run=true"></iframe>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=11dc282384908ce64180992dafa3c188&null_safety=true&run=true&theme=light"></iframe>
   </div>
 </div>
 
 <div id="c94aa90f8dfbd6d807be9c2772d504d2" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('c94aa90f8dfbd6d807be9c2772d504d2')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=c94aa90f8dfbd6d807be9c2772d504d2&null_safety=true&run=true"></iframe>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=c94aa90f8dfbd6d807be9c2772d504d2&null_safety=true&run=true&theme=light"></iframe>
   </div>
 </div>
 
 <div id="d4d3e01d810cb35552170bf7317bd3ee" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('d4d3e01d810cb35552170bf7317bd3ee')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=d4d3e01d810cb35552170bf7317bd3ee&null_safety=true&run=true"></iframe>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=d4d3e01d810cb35552170bf7317bd3ee&null_safety=true&run=true&theme=light"></iframe>
   </div>
 </div>
 
 <div id="fab6c5b75398c9d1315b8877725646cb" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('fab6c5b75398c9d1315b8877725646cb')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=fab6c5b75398c9d1315b8877725646cb&null_safety=true&run=true"></iframe>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=fab6c5b75398c9d1315b8877725646cb&null_safety=true&run=true&theme=light"></iframe>
   </div>
 </div>
 
 <div id="62dba7174bae5127cc47547a6984032c" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('62dba7174bae5127cc47547a6984032c')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=62dba7174bae5127cc47547a6984032c&null_safety=true&run=true"></iframe>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=62dba7174bae5127cc47547a6984032c&null_safety=true&run=true&theme=light"></iframe>
   </div>
 </div>
 
 <div id="46fa1b5e7e941dcc6a3917bb923ea8bb" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('46fa1b5e7e941dcc6a3917bb923ea8bb')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=46fa1b5e7e941dcc6a3917bb923ea8bb&null_safety=true&run=true"></iframe>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=46fa1b5e7e941dcc6a3917bb923ea8bb&null_safety=true&run=true&theme=light"></iframe>
   </div>
-
-  //mulai dari sini
+</div>
 
 <div id="3dd02b01404a0dc2e8fa0251ab10de6d" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('3dd02b01404a0dc2e8fa0251ab10de6d')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=3dd02b01404a0dc2e8fa0251ab10de6d&null_safety=true&run=true"></iframe>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=3dd02b01404a0dc2e8fa0251ab10de6d&null_safety=true&run=true&theme=light"></iframe>
   </div>
 </div>
 
 <div id="2fa7a88295c0b70c3739a64acf3e6609" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('2fa7a88295c0b70c3739a64acf3e6609')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=2fa7a88295c0b70c3739a64acf3e6609&null_safety=true&run=true"></iframe>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=2fa7a88295c0b70c3739a64acf3e6609&null_safety=true&run=true&theme=light"></iframe>
   </div>
 </div>
 
 <div id="1ce7965bdae8cb30413f2126fd140bbc" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('1ce7965bdae8cb30413f2126fd140bbc')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=1ce7965bdae8cb30413f2126fd140bbc&null_safety=true&run=true"></iframe>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=1ce7965bdae8cb30413f2126fd140bbc&null_safety=true&run=true&theme=light"></iframe>
   </div>
 </div>
 
 <div id="dcf4b00cade35460b7a7dbcea44561b3" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('dcf4b00cade35460b7a7dbcea44561b3')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=dcf4b00cade35460b7a7dbcea44561b3&null_safety=true&run=true"></iframe>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=dcf4b00cade35460b7a7dbcea44561b3&null_safety=true&run=true&theme=light"></iframe>
   </div>
 </div>
 
 <div id="a9c8ab069ebb9a3ec290ddb07e3a044e" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal('a9c8ab069ebb9a3ec290ddb07e3a044e')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=a9c8ab069ebb9a3ec290ddb07e3a044e&null_safety=true&run=true"></iframe>
+    <iframe src="https://dartpad.dev/embed-dart.html?id=a9c8ab069ebb9a3ec290ddb07e3a044e&null_safety=true&run=true&theme=light"></iframe>
   </div>
-  
 </div>
 
 <script>
