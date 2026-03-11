@@ -194,13 +194,23 @@ void main() {
   </button>
 </div>
 
-<h2>2. Constructor</h2>
+<h2>2.   JENIS-JENIS CONSTRUCTOR</h2>
 <div class="card">
   <p>
-    Constructor adalah metode inisialisasi yang dipanggil secara otomatis saat objek baru diciptakan dalam memori sistem. Di Dart, kita bisa menggunakan formal parameters (this.attribute) untuk menyederhanakan proses pengisian nilai attribute.
-    Constructor merupakan metode khusus yang dipanggil secara otomatis saat objek dibuat. 
-    Constructor berfungsi untuk melakukan inisialisasi nilai awal attribute sehingga objek langsung berada dalam kondisi valid dan siap digunakan. 
-    Dalam bahasa Dart, constructor dapat menggunakan formal parameter (<i>this.attribute</i>) untuk menyederhanakan penulisan kode.
+<pre>
+
+Dart menyediakan beberapa mekanisme inisialisasi objek untuk berbagai kebutuhan arsitektur:
+
+1. Default Constructor: ClassNane()
+
+2. Named Constructor: Classhame.nana()
+
+3. Parameterized Constructor: ClassName(this.parat
+
+4. Constant Constructor: const ClassName()
+
+5. Factory Constructor: (Akan dibahas pada sesi lanjut)
+  </pre>
   </p>
   
   <pre>
@@ -208,25 +218,61 @@ void main() {
 // Nim    : 251410024
 // Kelas  : Si2A
 
-class Car {
-  String model; 
-  String color; 
+import 'dart:convert';
 
-  Car(this.model, this.color);
+class Mobil {
+  String? merk;
+  int? tahun;
 
-  void start() {
-    print('Engine Online: $model'); 
+  // Parameterized constructor
+  Mobil(this.merk, this.tahun);
+
+  // Named constructor
+  Mobil.baru() {
+    merk = 'Bmw';
+    tahun = 2023;
+  }
+
+  // Named constructor dengan parameter
+  Mobil.dariJson(Map<String, dynamic> json) {
+    merk = json['merk'];
+    tahun = json['tahun'];
+  }
+
+  // Override toString for better print output
+  @override
+  String toString() {
+    return 'Mobil{merk: $merk, tahun: $tahun}';
   }
 }
 
 void main() {
-  Car myCar = Car("Sedan", "Merah");
-  myCar.start(); 
-  print(myCar.color); 
+  print('--- Demonstrasi Class Mobil ---');
+
+  // 1. Menggunakan constructor default (parameterized constructor)
+  var mobilA = Mobil('Mercedes', 2020);
+  print('Mobil A (constructor default): $mobilA');
+
+  // 2. Menggunakan named constructor Mobil.baru()
+  var mobilB = Mobil.baru();
+  print('Mobil B (named constructor .baru): $mobilB');
+
+  // 3. Menggunakan named constructor Mobil.dariJson()
+  String jsonString = '{"merk": "Jaguar", "tahun": 2021}';
+  Map<String, dynamic> jsonData = jsonDecode(jsonString);
+  var mobilC = Mobil.dariJson(jsonData);
+  print('Mobil C (named constructor .dariJson): $mobilC');
+
+  // Contoh lain dengan named constructor Mobil.dariJson()
+  Map<String, dynamic> anotherJsonData = {'merk': 'Audi', 'tahun': 2022};
+  var mobilD = Mobil.dariJson(anotherJsonData);
+  print('Mobil D (named constructor .dariJson): $mobilD');
+
+  print('\n--- Akhir Demonstrasi ---');
 }
   </pre>
   
-  <button class="btn" onclick="openModal('556cd77508c8381a0719ead99a41fe27')">
+  <button class="btn" onclick="openModal('c94aa90f8dfbd6d807be9c2772d504d2')">
     Lihat Kode
   </button>
 </div>
@@ -449,10 +495,10 @@ void main() {
   </div>
 </div>
 
-<div id="556cd77508c8381a0719ead99a41fe27" class="modal">
+<div id="c94aa90f8dfbd6d807be9c2772d504d2" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('556cd77508c8381a0719ead99a41fe27')">&times;</span>
-    <iframe src="https://dartpad.dev/?id=556cd77508c8381a0719ead99a41fe27&null_safety=true&run=true"></iframe>
+    <span class="close" onclick="closeModal('c94aa90f8dfbd6d807be9c2772d504d2')">&times;</span>
+    <iframe src="https://dartpad.dev/?id=c94aa90f8dfbd6d807be9c2772d504d2&null_safety=true&run=true"></iframe>
   </div>
 </div>
 
